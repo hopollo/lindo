@@ -242,6 +242,12 @@ export class GameComponent implements AfterViewInit {
           });
         };
 
+        let onCharacterInventoryFull = () => {
+          this.zone.run(() => {
+            this.game.emit('fullPods', true);
+          });
+        };
+
         let onDisconnect = () => {
             this.zone.run(() => {
                 this.game.emit('character', null);
@@ -257,6 +263,7 @@ export class GameComponent implements AfterViewInit {
 
         this.game.window.gui.on("GameFightStartingMessage", onCharacterEnterFight);
         this.game.window.gui.on("GameFightEndMessage", onCharacterLeaveFight);
+        this.game.window.gui.chat.on("tablet.inventoryFullCannotMove", onCharacterInventoryFull);
         this.game.window.gui.playerData.on("characterSelectedSuccess", onCharacterSelectedSuccess);
         this.game.window.gui.on("disconnect", onDisconnect);
 
