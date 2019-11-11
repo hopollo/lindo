@@ -58,7 +58,7 @@ export class GameComponent implements AfterViewInit {
     private hideShop: HideShop;
     private keyboardInput: KeyboardInput;
     private hideMount: HideMount;
-	private partyInfo:PartyInfo;
+	  private partyInfo:PartyInfo;
     private mover: Mover;
     constructor(
         private windowService: WindowService,
@@ -186,7 +186,7 @@ export class GameComponent implements AfterViewInit {
                 this.rapidExchange = new RapidExchange(this.game.window);
                 //this.wizAssets = new WizAssetsContainer(this.game.window, this.applicationService, this.http, this.settingsService.option.general);
                 this.keyboardInput = new KeyboardInput(this.game.window);
-				this.partyInfo = new PartyInfo(this.game.window, this.settingsService.option.vip.general.party_info_pp, this.settingsService.option.vip.general.party_info_lvl, this.translate);
+				        this.partyInfo = new PartyInfo(this.game.window, this.settingsService.option.vip.general.party_info_pp, this.settingsService.option.vip.general.party_info_lvl, this.translate);
                 this.mover = new Mover(this.game.window);
         }
     }
@@ -230,16 +230,33 @@ export class GameComponent implements AfterViewInit {
             this.checkMaxZoom();
         };
 
+        let onCharacterEnterFight = () => {
+          this.zone.run(() => {
+            this.game.emit('fight', true);
+          });
+        };
+
+        let onCharacterLeaveFight = () => {
+          this.zone.run(() => {
+            this.game.emit('fight', false);
+          });
+        };
+
         let onDisconnect = () => {
             this.zone.run(() => {
                 this.game.emit('character', null);
                 this.game.emit('logged', false);
+                this.game.emit('fight', false);
+                this.game.emit('fullPods', false);
+                this.game.emit('moving', false);
                 this.game.emit('icon', null);
                 this.removeMods();
             });
             this.removeMods();
         };
 
+        this.game.window.gui.on("GameFightStartingMessage", onCharacterEnterFight);
+        this.game.window.gui.on("GameFightEndMessage", onCharacterLeaveFight);
         this.game.window.gui.playerData.on("characterSelectedSuccess", onCharacterSelectedSuccess);
         this.game.window.gui.on("disconnect", onDisconnect);
 

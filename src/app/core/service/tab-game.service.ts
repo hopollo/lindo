@@ -51,6 +51,19 @@ export class TabGameService extends EventEmitter {
             game.on('logged', (logged: boolean) => {
                 tab.isLogged = logged;
             });
+
+            game.on('fight', (fight: boolean) => {
+                tab.isFighting = fight;
+            });
+
+            game.on('move', (move: boolean) => {
+                tab.isMoving = move;
+            });
+
+            game.on('fullPods', (fullPods: boolean) => {
+                tab.isFullPods = fullPods;
+            });
+
             game.on('notification', () => {
                 if (this.tabService.active.id !== tab.id) {
                     tab.notification = true;

@@ -1,7 +1,7 @@
 <div class="tabs-container">
     <div [sortablejs]="tabService.tabs">
 
-        <div class="tab tab-tab" [class.focus]="tab.isFocus" [class.notification]="tab.notification" *ngFor="let tab of tabService.tabs;"
+        <div class="tab tab-tab" [class.focus]="tab.isFocus" [class.fight]="tab.isFighting" [class.fullPods]="tab.isFullPods" [class.moving]="tab.isMoving" [class.notification]="tab.notification" *ngFor="let tab of tabService.tabs;"
             (click)="tabGameService.selectTabGame(tab.id);" matTooltip="{{tab.character}}" matTooltipPosition="right">
 
             <mat-icon *ngIf="!tab.icon">keyboard</mat-icon>

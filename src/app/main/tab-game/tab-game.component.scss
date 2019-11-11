@@ -68,6 +68,18 @@ div.tab {
       color: white;
       border-color: #607d8b;
     }
+    &.moving {
+      opacity: 1;
+      border-color: greenyellow;
+    }
+    &.fight {
+      opacity: 1;
+      border-color: orange;
+    }
+    &.fullPods {
+      opacity: 1;
+      border-color: red;
+    }
   }
   &:hover {
     background: #2f2f2f;

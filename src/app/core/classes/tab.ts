@@ -5,6 +5,9 @@ export class Tab {
     public icon:HTMLDivElement = null;
     public isLogged: boolean = false;
     public isFocus: boolean = false;
+    public isFighting: boolean = false;
+    public isFullPods: boolean = false;
+    public isMoving: boolean = false;
     public notification: boolean = false;
 
     public constructor(id: number) {
