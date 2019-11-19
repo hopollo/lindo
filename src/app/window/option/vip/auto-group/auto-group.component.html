@@ -15,6 +15,9 @@
                   <mat-icon class="mat-18 text-primary" matTooltipPosition="below" matTooltip="{{ 'app.option.vip.auto-group.explanation-auto-pass' | translate }}">info</mat-icon>
                 </mat-checkbox>
             </div>
+            <div class="col-xs-12" *ngIf="settingsService.option.vip.autogroup.fight"></div>
+              <mat-checkbox color="primary" [(ngModel)]="settingsService.option.vip.autogroup.clean_window">{{'app.option.vip.auto-group.clean-window' | translate }}</mat-checkbox>
+            </div>
         </div>
     </div>
 
@@ -28,7 +31,6 @@
             </div>
 
             <div *ngIf="settingsService.option.vip.autogroup.follow_leader">
-
                 <div class="col-xs-12">
                     <mat-checkbox color="primary" [(ngModel)]="settingsService.option.vip.autogroup.follow_on_map">{{'app.option.vip.auto-group.follow-on-map' | translate }}</mat-checkbox>
                 </div>
@@ -42,7 +44,6 @@
                         <strong>{{ 'app.option.vip.auto-group.warning' | translate }}</strong>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

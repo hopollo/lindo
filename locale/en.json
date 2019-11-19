@@ -115,6 +115,7 @@
           "fight": "Entry into combat automatically",
           "auto-pass": "End turn automatically on alt characters",
           "delay": "Time to follow (in seconds)",
+          "clean-window": "Clear popups when fight ends",
           "follow-on-map": "Follow the leader on a map",
           "strict-move": "Move on the same cell the leader moves",
           "pvp-warning": "You can't join a PvP fight automatically"
