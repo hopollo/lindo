@@ -173,8 +173,7 @@ export class Notifications extends Mods {
 
     private sendFullPodsNotif(e: any) {
       if (!this.wGame.document.hasFocus() && 
-           this.params.full_pods && 
-           e.weight >= e.weightMax) {
+      this.wGame.gui.playerData.inventory.isOverloaded()) {
           
         this.eventEmitter.emit('newNotification');
         
